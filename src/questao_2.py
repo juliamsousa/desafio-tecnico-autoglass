@@ -1,4 +1,8 @@
 from typing import List
+import logging
+
+logging.basicConfig(filename='../logs/questao_2.log', encoding='utf-8', level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 def check_even_numbers(number_list: List[int]) -> List[int]:
     try:
@@ -14,10 +18,13 @@ def check_even_numbers(number_list: List[int]) -> List[int]:
 
     except TypeError:
         print('O parâmetro passado deve ser uma lista de números inteiros!')
+        logger.error('Erro na execução')
         return []
 
 
 if __name__ == '__main__':
+    logger.info('Executando a questão 2')
+
     print('Executando o teste')
     test_result = check_even_numbers([])
     print(f'Resultado do teste: {test_result} \n')
@@ -49,3 +56,5 @@ if __name__ == '__main__':
     print('Executando o teste')
     test_result = check_even_numbers(['a', True])
     print(f'Resultado do teste: {test_result} \n')
+
+    logger.info('Fim da execução da questão 2')
